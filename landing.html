@@ -44,25 +44,47 @@
                     >
                         <source src="video.mp4" type="video/mp4">
                     </video>
+                    <div class="play-button" id="playButton">
+                        <i id="playIcon" class="fas fa-play"></i>
+                    </div>
                 </div>
             </div>
         </div>
 
         <script>
             const video = document.getElementById('heroVideo');
+            const playButton = document.getElementById('playButton');
+            const playIcon = document.getElementById('playIcon');
             
-            // Autoplay with user interaction
-            document.body.addEventListener('mousemove', function() {
-                video.play();
-            }, { once: true });
+            // Initial state
+            video.play();
+            setTimeout(() => {
+                video.muted = false;
+            }, 50);
             
-            // Click toggle
-            video.addEventListener('click', () => {
+            // Play/Pause toggle with button
+            playButton.addEventListener('click', function() {
                 if (video.paused) {
                     video.play();
+                    video.muted = false;
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
                 } else {
                     video.pause();
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play');
                 }
+            });
+            
+            // Update button icon based on video state
+            video.addEventListener('play', function() {
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+            });
+            
+            video.addEventListener('pause', function() {
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
             });
         </script>
         

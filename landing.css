@@ -507,3 +507,32 @@ footer {
 .phone-video::-webkit-media-controls-enclosure {
     display: none !important;
 }
+
+.screen {
+    position: relative;
+}
+  .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(254, 44, 85, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+  }
+
+  .play-button i {
+      color: white;
+      font-size: 24px;
+      margin-left: 4px;
+  }
+
+  .play-button:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+  }
