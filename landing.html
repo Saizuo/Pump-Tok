@@ -37,6 +37,7 @@
                     <video 
                         id="heroVideo" 
                         autoplay 
+                        muted 
                         loop 
                         playsinline 
                         class="phone-video"
@@ -46,12 +47,14 @@
                 </div>
             </div>
         </div>
-        
+
         <script>
             const video = document.getElementById('heroVideo');
             
-            // Start playing right away
-            video.play();
+            // Autoplay with user interaction
+            document.body.addEventListener('mousemove', function() {
+                video.play();
+            }, { once: true });
             
             // Click toggle
             video.addEventListener('click', () => {
