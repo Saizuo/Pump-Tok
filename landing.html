@@ -32,25 +32,22 @@
             </div>
         </div>
         <div class="hero-visual">
-            <div class="phone-mockup">
-                <div class="screen">
-                    <video 
-                        id="heroVideo" 
-                        autoplay 
-                        muted 
-                        loop 
-                        playsinline 
-                        class="phone-video"
-                    >
-                        <source src="video.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-button" id="playButton">
-                        <i id="playIcon" class="fas fa-play"></i>
+            <div class="mockup-container">
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <video id="heroVideo" autoplay muted loop playsinline class="phone-video">
+                            <source src="video.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-button" id="playButton">
+                            <i id="playIcon" class="fas fa-play"></i>
+                        </div>
                     </div>
+                </div>
+                <div class="play-text">
+                    Click to play! <i class="fas fa-arrow-left"></i>
                 </div>
             </div>
         </div>
-
         <script>
             const video = document.getElementById('heroVideo');
             const playButton = document.getElementById('playButton');

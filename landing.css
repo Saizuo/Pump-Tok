@@ -536,3 +536,36 @@ footer {
   .play-button:hover {
       transform: translate(-50%, -50%) scale(1.1);
   }
+
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.mockup-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.play-text {
+    font-family: 'Righteous', cursive;
+    color: var(--primary-color);
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: bounce 2s infinite;
+}
+
+.play-text i {
+    color: var(--secondary-color);
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+}
