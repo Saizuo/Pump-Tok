@@ -10,7 +10,10 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Pump Tok</div>
+        <div class="logo">
+            <img src="logo.gif" alt="PumpTok Logo">
+            <span>PumpTok</span>
+        </div>        
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#trending">Trending</a>
@@ -31,15 +34,36 @@
         <div class="hero-visual">
             <div class="phone-mockup">
                 <div class="screen">
-                    <div class="content-scroll">
-                        <div class="video-card"></div>
-                        <div class="video-card"></div>
-                        <div class="video-card"></div>
-                    </div>
+                    <video 
+                        id="heroVideo" 
+                        autoplay 
+                        loop 
+                        playsinline 
+                        class="phone-video"
+                    >
+                        <source src="video.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
-    </header>
+        
+        <script>
+            const video = document.getElementById('heroVideo');
+            
+            // Start playing right away
+            video.play();
+            
+            // Click toggle
+            video.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        </script>
+        
+    </header>        
 
     <section id="features" class="features">
         <h2>Why Choose PumpTok?</h2>
@@ -111,3 +135,6 @@
     </footer>
 </body>
 </html>
+  <script>
+
+  </script>
