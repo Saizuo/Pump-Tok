@@ -1,6 +1,6 @@
 :root {
     --primary-color: #fe2c55;
-    --secondary-color: #25f4ee;
+    --secondary-color: #52d593;
     --background-color: #121212;
     --text-color: #ffffff;
     --sidebar-width: 340px;
@@ -273,4 +273,82 @@ body {
 
 .login-btn .sign-in:active {
     transform: translateY(0);
+}
+
+/* Mobile Responsiveness for Main App */
+@media screen and (max-width: 768px) {
+    :root {
+        --sidebar-width: 70px;
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .sidebar {
+
+
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        z-index: 1000;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0;
+    }
+
+
+    .logo {
+        display: none;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0;
+        height: 100%;
+    }
+
+    .sidebar nav a {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+
+    .content {
+        margin-left: 0;
+        padding-bottom: 70px;
+    }
+
+    .suggested-accounts,
+    .account-info {
+        display: none;
+    }
+
+
+
+
+
+
+    .post {
+        width: 100%;
+
+        height: calc(100vh - 60px);
+        margin: 0;
+    }
+
+    .video-container {
+
+        height: 100%;
+    }
+
+    .video-container img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .top-nav {
+        right: 10px;
+    }
+
 }
