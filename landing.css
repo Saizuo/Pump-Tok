@@ -524,7 +524,8 @@ footer {
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: opacity 0.3s ease;
+      opacity: 0;
   }
 
   .play-button i {
@@ -533,39 +534,39 @@ footer {
       margin-left: 4px;
   }
 
-  .play-button:hover {
-      transform: translate(-50%, -50%) scale(1.1);
+  .screen:hover .play-button {
+      opacity: 1;
+  }
+
+  /* Show button when video is paused */
+  .video-paused .play-button {
+      opacity: 1;
   }
 
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+  .mockup-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+  }
 
-.mockup-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
+  .play-instruction {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: -80px;
+  }
 
-.play-text {
-    font-family: 'Righteous', cursive;
-    color: var(--primary-color);
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    animation: bounce 2s infinite;
-}
+  .play-text {
+      font-family: 'Righteous', cursive;
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      margin-left: 100px;
+  }
 
-.play-text i {
-    color: var(--secondary-color);
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-10px);
-    }
-}
+  .curvy-arrow {
+      width: 200px;
+      height: auto;
+      transform: translateY(-20px) translateX(70px); /* Added translateX to move right */
+  }
