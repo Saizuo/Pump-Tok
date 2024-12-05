@@ -3,71 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PumpTok - Get Your Groove On!</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Welcome to Pump Tok - Get Your Groove On!</title>
+    <link rel="stylesheet" href="landing.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="top-nav">
-            <div class="login-btn">
-                <button class="sign-in">Log in</button>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.gif" alt="PumpTok Logo">
+            <span>PumpTok</span>
+        </div>        
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#trending">Trending</a>
+            <a href="#community">Community</a>
+            <a href="landing.html" class="download-btn">Enter here</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to <span class="gradient-text">Pump Tok</span></h1>
+            <p>Where Every Beat Tells Your Story</p>
+            <div class="cta-buttons">
+                <button class="primary-btn">Get Started</button>
+                <button class="secondary-btn">Learn More</button>
             </div>
         </div>
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="logo.gif" alt="PumpTok Logo">
-                <h1>PumpTok</h1>
-            </div>            
-            <nav>
-                <a href="#" class="active"><i class="fas fa-home"></i> For You</a>
-                <a href="#"><i class="fas fa-users"></i> Following</a>
-                <a href="#"><i class="fas fa-compass"></i> Explore</a>
-                <a href="#"><i class="fas fa-music"></i> Sounds</a>
-                <a href="#"><i class="fas fa-broadcast-tower"></i> LIVE</a>
-            </nav>
-            <div class="suggested-accounts">
-                <h3>Suggested accounts</h3>
-                <div class="account">
-                    <img src="https://picsum.photos/50" alt="User">
-                    <div class="account-info">
-                        <span class="username">dancequeen</span>
-                        <span class="name">Dance Queen</span>
-                    </div>
-                </div>
-                <div class="account">
-                    <img src="https://picsum.photos/51" alt="User">
-                    <div class="account-info">
-                        <span class="username">groovymaster</span>
-                        <span class="name">Groovy Master</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        
-        <main class="content">
-            <div class="post">
-                <div class="post-container">
-                    <div class="video-container">
-                        <img src="https://picsum.photos/400/600" alt="Video Placeholder">
-                        <div class="video-actions">
-                            <button class="action-btn"><i class="fas fa-heart"></i><span>87.5K</span></button>
-                            <button class="action-btn"><i class="fas fa-comment"></i><span>1.2K</span></button>
-                            <button class="action-btn"><i class="fas fa-share"></i><span>2.3K</span></button>
+        <div class="hero-visual">
+            <div class="mockup-container">
+                <div class="phone-mockup">
+                    <div class="screen">
+                        <video id="heroVideo" autoplay muted loop playsinline class="phone-video">
+                            <source src="video.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-button" id="playButton">
+                            <i id="playIcon" class="fas fa-play"></i>
                         </div>
                     </div>
-                    <div class="post-info">
-                        <h3>@dancequeen</h3>
-                        <p>Getting groovy with the new dance trend! 🕺💃 #PumpTok #DanceVibes</p>
-                    </div>
+                </div>
+                <div class="play-instruction">
+                    <div class="play-text gradient-text">Click to play!</div>
+                    <img src="image.png" class="curvy-arrow" alt="arrow">
                 </div>
             </div>
-        </main>
-        
-        <div class="upload-btn">
-            <i class="fas fa-plus"></i>
         </div>
-    </div>
+              
+        <script>
+            const video = document.getElementById('heroVideo');
+            const playButton = document.getElementById('playButton');
+            const playIcon = document.getElementById('playIcon');
+            const screen = document.querySelector('.screen');
+            
+            // Initial state
+            video.play();
+            setTimeout(() => {
+                video.muted = false;
+            }, 50);
+            
+            // Play/Pause toggle with button
+            playButton.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    video.muted = false;
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
+                } else {
+                    video.pause();
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play');
+                }
+            });
+            
+            // Update button icon based on video state
+            video.addEventListener('play', function() {
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                screen.classList.remove('video-paused');
+            });
+            
+            video.addEventListener('pause', function() {
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                screen.classList.add('video-paused');
+            });
+        </script>
+        
+    </header>        
+
+    <section id="features" class="features">
+        <h2>Why Choose PumpTok?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-music"></i>
+                <h3>Trending Music</h3>
+                <p>Access millions of tracks for your videos</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-magic"></i>
+                <h3>Cool Effects</h3>
+                <p>Create magic with our special effects</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Global Community</h3>
+                <p>Connect with creators worldwide</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Go Viral</h3>
+                <p>Let your content reach millions</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <span class="number">1B+</span>
+            <span class="label">Monthly Views</span>
+        </div>
+        <div class="stat-item">
+            <span class="number">100M+</span>
+            <span class="label">Active Users</span>
+        </div>
+        <div class="stat-item">
+            <span class="number">50M+</span>
+            <span class="label">Creators</span>
+        </div>
+    </section>
+
+    <section class="download">
+        <div class="download-content">
+            <h2>Ready to Start?</h2>
+            <p>Download PumpTok now and join the revolution!</p>
+            <div class="store-buttons">
+                <button class="store-btn"><i class="fab fa-apple"></i> App Store</button>
+                <button class="store-btn"><i class="fab fa-google-play"></i> Play Store</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>PumpTok</h4>
+                <p>Where creativity meets rhythm</p>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
+  <script>
+
+  </script>
