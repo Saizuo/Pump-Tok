@@ -437,7 +437,6 @@ footer {
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
     letter-spacing: 1px;
     box-shadow: 0 4px 15px rgba(254, 44, 85, 0.3);
 }
