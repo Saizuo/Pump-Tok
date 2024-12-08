@@ -45,93 +45,105 @@
                 </div>
             </div>
         </aside>
-                  <main class="content">
-                      <!-- First Video Post -->
-                      <div class="post">
-                          <div class="post-container">
-                              <div class="video-container">
-                                  <video width="100%" height="100%" controls loop>
-                                      <source src="1.mp4" type="video/mp4">
-                                      Your browser does not support the video tag.
-                                  </video>
-                                  <div class="video-actions">
-                                      <button class="action-btn"><i class="fas fa-heart"></i><span>87.5K</span></button>
-                                      <button class="action-btn"><i class="fas fa-comment"></i><span>1.2K</span></button>
-                                      <button class="action-btn"><i class="fas fa-share"></i><span>2.3K</span></button>
-                                  </div>
-                              </div>
-                              <div class="post-info">
-                                  <h3>@dancequeen</h3>
-                                  <p>Getting groovy with the new dance trend! 🕺💃 #PumpTok #DanceVibes</p>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!-- Second Video Post -->
-                      <div class="post">
-                          <div class="post-container">
-                              <div class="video-container">
-                                  <video width="100%" height="100%" controls loop>
-                                      <source src="2.mp4" type="video/mp4">
-                                      Your browser does not support the video tag.
-                                  </video>
-                                  <div class="video-actions">
-                                      <button class="action-btn"><i class="fas fa-heart"></i><span>45.2K</span></button>
-                                      <button class="action-btn"><i class="fas fa-comment"></i><span>892</span></button>
-                                      <button class="action-btn"><i class="fas fa-share"></i><span>1.5K</span></button>
-                                  </div>
-                              </div>
-                              <div class="post-info">
-                                  <h3>@pumptokstar</h3>
-                                  <p>Check out these moves! 🔥 #DanceChallenge #PumpTok</p>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!-- Third Video Post -->
-                      <div class="post">
-                          <div class="post-container">
-                              <div class="video-container">
-                                  <video width="100%" height="100%" controls loop>
-                                      <source src="3.mp4" type="video/mp4">
-                                      Your browser does not support the video tag.
-                                  </video>
-                                  <div class="video-actions">
-                                      <button class="action-btn"><i class="fas fa-heart"></i><span>92.1K</span></button>
-                                      <button class="action-btn"><i class="fas fa-comment"></i><span>2.3K</span></button>
-                                      <button class="action-btn"><i class="fas fa-share"></i><span>3.1K</span></button>
-                                  </div>
-                              </div>
-                              <div class="post-info">
-                                  <h3>@dancemaster</h3>
-                                  <p>New routine just dropped! 💪 #PumpTokDance #Viral</p>
-                              </div>
-                          </div>
-                      </div>
-                  </main>
-                <div class="upload-btn">
+        <main class="content">
+            <div class="post">
+                <div class="video-container">
+                    <video loop>
+                        <source src="1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-actions">
+                        <button class="action-btn"><i class="fas fa-heart"></i><span>87.5K</span></button>
+                        <button class="action-btn"><i class="fas fa-comment"></i><span>1.2K</span></button>
+                        <button class="action-btn"><i class="fas fa-share"></i><span>2.3K</span></button>
+                    </div>
+                    <div class="post-info">
+                        <h3>@dancequeen</h3>
+                        <p>Getting groovy with the new dance trend! 🕺💃 #PumpTok #DanceVibes</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Additional posts can be added here -->
+        </main>
+        <div class="upload-btn">
             <i class="fas fa-plus"></i>
         </div>
     </div>
+    <script>
+        const videoSources = ['1.mp4', '2.mp4', '3.mp4'];
+        const postData = [
+            { username: '@dancequeen', text: 'Getting groovy with the new dance trend! 🕺💃 #PumpTok #DanceVibes', likes: '87.5K', comments: '1.2K', shares: '2.3K' },
+            { username: '@pumptokstar', text: 'Check out these moves! 🔥 #DanceChallenge #PumpTok', likes: '45.2K', comments: '892', shares: '1.5K' },
+            { username: '@dancemaster', text: 'New routine just dropped! 💪 #PumpTokDance #Viral', likes: '92.1K', comments: '2.3K', shares: '3.1K' }
+        ];
+        
+        let currentIndex = 0;
+        let isTransitioning = false;
+        
+        const mainContainer = document.querySelector('.content');
+        
+        function updatePost(index) {
+            // First fade out
+            mainContainer.style.opacity = '0';
+            mainContainer.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                // Update the entire post content
+                mainContainer.innerHTML = `
+                    <div class="post">
+                        <div class="video-container">
+                            <video width="100%" height="100%" loop>
+                                <source src="${videoSources[index]}" type="video/mp4">
+                            </video>
+                            <div class="video-actions">
+                                <button class="action-btn"><i class="fas fa-heart"></i><span>${postData[index].likes}</span></button>
+                                <button class="action-btn"><i class="fas fa-comment"></i><span>${postData[index].comments}</span></button>
+                                <button class="action-btn"><i class="fas fa-share"></i><span>${postData[index].shares}</span></button>
+                            </div>
+                            <div class="post-info">
+                                <h3>${postData[index].username}</h3>
+                                <p>${postData[index].text}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Setup new video
+                const video = mainContainer.querySelector('video');
+                video.removeAttribute('controls');
+                video.style.objectFit = 'contain';
+                
+                // Smooth fade in
+                setTimeout(() => {
+                    mainContainer.style.opacity = '1';
+                    mainContainer.style.transform = 'translateY(0)';
+                    video.play();
+                }, 300);
+                
+            }, 600);
+        }
+        
+        // Smoother scroll handling
+        window.addEventListener('wheel', (e) => {
+            if (isTransitioning) return;
+            
+            isTransitioning = true;
+            if (e.deltaY > 0 && currentIndex < videoSources.length - 1) {
+                currentIndex++;
+                updatePost(currentIndex);
+            } else if (e.deltaY < 0 && currentIndex > 0) {
+                currentIndex--;
+                updatePost(currentIndex);
+            }
+            
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 1200); // Longer cooldown between transitions
+        });
+        
+        // Initial setup
+        mainContainer.style.transition = 'all 0.6s ease';
+        updatePost(0);
+    </script>
 </body>
 </html>
-
-<script>
-    const videos = document.querySelectorAll('video');
-    
-    // Create an Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.play();
-            } else {
-                entry.target.pause();
-            }
-        });
-    }, { threshold: 0.5 });
-
-    // Observe all videos
-    videos.forEach(video => {
-        observer.observe(video);
-    });
-</script>
