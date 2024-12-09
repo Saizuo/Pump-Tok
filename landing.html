@@ -48,10 +48,13 @@
         <main class="content">
             <div class="post">
                 <div class="video-container">
-                    <video loop>
+                    <video width="100%" height="100%" loop>
                         <source src="1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <button class="play-pause-btn" onclick="togglePlay(this)">
+                        <i class="fas fa-pause"></i>
+                    </button>
                     <div class="video-actions">
                         <button class="action-btn"><i class="fas fa-heart"></i><span>87.5K</span></button>
                         <button class="action-btn"><i class="fas fa-comment"></i><span>1.2K</span></button>
@@ -85,44 +88,44 @@
         function updatePost(index) {
             mainContainer.style.opacity = '0';
             mainContainer.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                mainContainer.innerHTML = `
-                    <div class="post">
-                        <div class="video-container">
-                            <!-- Add this inside each video-container, right after the video element -->
-<button class="play-pause-btn">
-    <i class="fas fa-play"></i>
-</button>
-
-                            <video width="100%" height="100%" loop>
-                                <source src="${videoSources[index]}" type="video/mp4">
-                            </video>
-                            <div class="video-actions">
-                                <button class="action-btn"><i class="fas fa-heart"></i><span>${postData[index].likes}</span></button>
-                                <button class="action-btn"><i class="fas fa-comment"></i><span>${postData[index].comments}</span></button>
-                                <button class="action-btn"><i class="fas fa-share"></i><span>${postData[index].shares}</span></button>
-                            </div>
-                            <div class="post-info">
-                                <h3>${postData[index].username}</h3>
-                                <p>${postData[index].text}</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                          setTimeout(() => {
+                              mainContainer.innerHTML = `
+                  <div class="post">
+                      <div class="video-container">
+                          <video width="100%" height="100%" loop>
+                              <source src="${videoSources[index]}" type="video/mp4">
+                          </video>
+                          ${index === 0 ? `
+                          <button class="play-pause-btn" onclick="togglePlay(this)">
+                              <i class="fas fa-play"></i>
+                          </button>
+                          ` : ''}
+                          <div class="video-actions">
+                              <button class="action-btn"><i class="fas fa-heart"></i><span>${postData[index].likes}</span></button>
+                              <button class="action-btn"><i class="fas fa-comment"></i><span>${postData[index].comments}</span></button>
+                              <button class="action-btn"><i class="fas fa-share"></i><span>${postData[index].shares}</span></button>
+                          </div>
+                          <div class="post-info">
+                              <h3>${postData[index].username}</h3>
+                              <p>${postData[index].text}</p>
+                          </div>
+                      </div>
+                  </div>
+              `;
                 
                 const video = mainContainer.querySelector('video');
                 video.removeAttribute('controls');
                 video.style.objectFit = 'contain';
                 
                 // Add click handler for play/pause
-                video.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (video.paused) {
-                        video.play();
-                    } else {
-                        video.pause();
+                const videoContainer = mainContainer.querySelector('.video-container');
+                videoContainer.addEventListener('click', () => {
+                    const video = videoContainer.querySelector('video');
+                    const playPauseBtn = videoContainer.querySelector('.play-pause-btn');
+                    if (playPauseBtn) {
+                        playPauseBtn.style.display = 'none';
                     }
+                    video.play();
                 });
                 
                 setTimeout(() => {
@@ -150,23 +153,31 @@
                 isTransitioning = false;
             }, 1200); // Longer cooldown between transitions
         });
-        
-        // Initial setup
-        mainContainer.style.transition = 'all 0.6s ease';
-        updatePost(0);
+                      // Initial setup
+                      mainContainer.style.transition = 'all 0.6s ease';
+                      updatePost(0);
 
-
-// Add this to the existing script
-const video = document.querySelector('video');
-
-video.addEventListener('click', () => {
-    if (video.paused) {
-        video.play();
-    } else {
-        video.pause();
-    }
-});
-
+                      setTimeout(() => {
+                          mainContainer.style.opacity = '1';
+                          mainContainer.style.transform = 'translateY(0)';
+                          video.play();
+                          const playPauseBtn = mainContainer.querySelector('.play-pause-btn');
+                          playPauseBtn.style.display = 'none'; // Hide button when video starts playing
+                      }, 300);
     </script>
+<script>
+    function togglePlay(button) {
+        const video = button.previousElementSibling;
+        
+        if (video.paused) {
+            video.play();
+            button.style.display = 'none';
+        } else {
+            video.pause();
+            button.style.display = 'flex';
+        }
+    }
+</script>
+
 </body>
 </html>
