@@ -90,6 +90,11 @@
                 mainContainer.innerHTML = `
                     <div class="post">
                         <div class="video-container">
+                            <!-- Add this inside each video-container, right after the video element -->
+<button class="play-pause-btn">
+    <i class="fas fa-play"></i>
+</button>
+
                             <video width="100%" height="100%" loop>
                                 <source src="${videoSources[index]}" type="video/mp4">
                             </video>
